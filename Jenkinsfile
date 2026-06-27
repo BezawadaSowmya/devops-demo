@@ -9,15 +9,15 @@ pipeline {
             }
         }
 
-        stage('Build') {
+        stage('Build Docker Image') {
             steps {
-                bat 'echo Building Application...'
+                bat 'docker build -t devops-demo:v1 .'
             }
         }
 
-        stage('Test') {
+        stage('Run Docker Container') {
             steps {
-                bat 'echo Running Tests...'
+                bat 'docker run --rm devops-demo:v1'
             }
         }
     }
